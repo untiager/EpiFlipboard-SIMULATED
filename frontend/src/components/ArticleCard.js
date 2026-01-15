@@ -18,7 +18,7 @@ const ArticleCard = ({ article, size = 'medium' }) => {
     <Link to={`/article/${article.id}`} className={`article-card article-card-${size}`}>
       <div className="article-image-container">
         <img 
-          src={article.image_url || 'https://via.placeholder.com/800x600?text=No+Image'} 
+          src={article.image_url || '/placeholder.png'} 
           alt={article.title}
           className="article-image"
         />

@@ -55,7 +55,7 @@ const Article = () => {
     <div className="article-page">
       <div className="article-header">
         <img 
-          src={article.image_url || 'https://via.placeholder.com/1200x600?text=No+Image'} 
+          src={article.image_url || '/placeholder.png'} 
           alt={article.title}
           className="article-header-image"
         />
