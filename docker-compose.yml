@@ -1,0 +1,71 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: flipboard_db
+    restart: always
+    environment:
+      POSTGRES_USER: flipboard
+      POSTGRES_PASSWORD: flipboard123
+      POSTGRES_DB: flipboard
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - flipboard_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U flipboard"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend API (Node.js/Express)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: flipboard_backend
+    restart: always
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: flipboard
+      DB_USER: flipboard
+      DB_PASSWORD: flipboard123
+    ports:
+      - "5000:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - flipboard_network
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  # Frontend (React)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: flipboard_frontend
+    restart: always
+    environment:
+      REACT_APP_API_URL: http://localhost:5000
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - flipboard_network
+
+volumes:
+  postgres_data:
+
+networks:
+  flipboard_network:
+    driver: bridge
