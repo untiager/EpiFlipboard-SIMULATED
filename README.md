@@ -1,21 +1,21 @@
-# 📰 Flipboard Clone
+# Flipboard Clone
 
 A modern web application that recreates the Flipboard experience with content aggregation, magazine-style layout, and smooth animations. Built with React, Node.js, Express, and PostgreSQL, fully containerized with Docker.
 
-## ✨ Features
+## Features
 
-- 🎨 **Magazine-style UI** - Beautiful card-based layout inspired by Flipboard
-- 📱 **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
-- 🔥 **Trending Articles** - Highlights the most viewed content
-- 📂 **Category Navigation** - Browse articles by topic (Technology, Business, Science, etc.)
-- 🖼️ **Rich Media** - High-quality images with smooth hover effects
-- ⚡ **Fast & Efficient** - Optimized performance with PostgreSQL database
-- 🐳 **Docker Ready** - Single command deployment with docker-compose
-- 📰 **Real Content Aggregation** - Automatically fetches articles from RSS feeds (TechCrunch, Wired, Bloomberg, ESPN, etc.)
-- 🔄 **Auto-Update** - Content refreshes every 6 hours automatically
-- 🎯 **Professional Design** - Clean interface without emojis for a professional look
+- **Magazine-style UI** - Beautiful card-based layout inspired by Flipboard
+- **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
+- **Trending Articles** - Highlights the most viewed content
+- **Category Navigation** - Browse articles by topic (Technology, Business, Science, etc.)
+- **Rich Media** - High-quality images with smooth hover effects
+- **Fast & Efficient** - Optimized performance with PostgreSQL database
+- **Docker Ready** - Single command deployment with docker-compose
+- **Real Content Aggregation** - Automatically fetches articles from RSS feeds (TechCrunch, Wired, Bloomberg, ESPN, etc.)
+- **Auto-Update** - Content refreshes every 6 hours automatically
+- **Professional Design** - Clean interface for a professional look
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ├── frontend/          # React application
@@ -31,7 +31,7 @@ A modern web application that recreates the Flipboard experience with content ag
 └── docker-compose.yml    # Docker orchestration
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -72,7 +72,7 @@ A modern web application that recreates the Flipboard experience with content ag
    docker-compose down -v
    ```
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### Articles
 - `GET /api/articles` - Get all articles (supports ?category=slug&limit=20&offset=0)
@@ -89,7 +89,7 @@ A modern web application that recreates the Flipboard experience with content ag
 ### Health Check
 - `GET /health` - API health check
 
-## 📰 Content Sources
+## Content Sources
 
 The application automatically aggregates content from:
 
@@ -102,7 +102,7 @@ The application automatically aggregates content from:
 
 Content is fetched automatically every 6 hours, or can be manually triggered via the admin endpoint.
 
-## 🎨 Design Features
+## Design Features
 
 ### Visual Elements
 - **Card Layouts**: Magazine-style cards with images, titles, and descriptions
@@ -117,7 +117,7 @@ Content is fetched automatically every 6 hours, or can be manually triggered via
 - **Trending Section**: Highlights popular content
 - **Reading View**: Clean, distraction-free article reading
 
-## 🗄️ Database Schema
+## Database Schema
 
 ### Categories Table
 - id (SERIAL PRIMARY KEY)
@@ -139,7 +139,7 @@ Content is fetched automatically every 6 hours, or can be manually triggered via
 - published_at (TIMESTAMP)
 - views (INTEGER)
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Frontend
 - **React 18** - UI library
@@ -158,7 +158,7 @@ Content is fetched automatically every 6 hours, or can be manually triggered via
 - **Docker Compose** - Multi-container orchestration
 - **Nginx** - Frontend web server
 
-## 📝 Environment Variables
+## Environment Variables
 
 ### Backend (.env)
 ```env
@@ -176,7 +176,7 @@ DB_PASSWORD=flipboard123
 REACT_APP_API_URL=http://localhost:5000
 ```
 
-## 🔧 Development Mode
+## Development Mode
 
 ### Backend Development
 ```bash
@@ -192,14 +192,14 @@ npm install
 npm start
 ```
 
-## 📦 Sample Data
+## Sample Data
 
 The application comes pre-loaded with:
 - **8 Categories**: Technology, Business, Science, Entertainment, Sports, Health, Travel, Food
 - **10 Sample Articles**: Diverse content across all categories
 - **High-quality placeholder images**: From Unsplash
 
-## 🌟 Future Enhancements
+## Future Enhancements
 
 - [ ] User authentication and personalization
 - [ ] Bookmarking and favorites
@@ -211,15 +211,15 @@ The application comes pre-loaded with:
 - [ ] Infinite scroll pagination
 - [ ] Article recommendations
 
-## 📄 License
+## License
 
 MIT License - feel free to use this project for learning or production.
 
-## 👨‍💻 Contributing
+## Contributing
 
 Contributions are welcome! Feel free to submit issues or pull requests.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Inspired by Flipboard's elegant design
 - Images courtesy of Unsplash
@@ -227,4 +227,4 @@ Contributions are welcome! Feel free to submit issues or pull requests.
 
 ---
 
-**Enjoy your personal magazine! 📰✨**
+**Enjoy your personal magazine!**
