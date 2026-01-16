@@ -1,4 +1,4 @@
-# Flipboard Clone
+# Epi-Flipboard
 
 A modern web application that recreates the Flipboard experience with content aggregation, magazine-style layout, and smooth animations. Built with React, Node.js, Express, and PostgreSQL, fully containerized with Docker.
 
