@@ -18,13 +18,13 @@ A modern web application that recreates the Flipboard experience with content ag
 ## Architecture
 
 ```
-├── frontend/          # React application
+├── frontend/             # React application
 │   ├── src/
 │   │   ├── components/   # Reusable components (Header, ArticleCard)
 │   │   ├── pages/        # Page components (Home, Category, Article)
 │   │   └── services/     # API integration
 │   └── Dockerfile
-├── backend/           # Node.js/Express API
+├── backend/              # Node.js/Express API
 │   ├── routes/           # API routes
 │   ├── database/         # Database configuration and schema
 │   └── Dockerfile
