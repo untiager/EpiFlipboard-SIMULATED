@@ -29,6 +29,42 @@ CREATE TABLE IF NOT EXISTS articles (
 CREATE INDEX IF NOT EXISTS idx_articles_category ON articles(category_id);
 CREATE INDEX IF NOT EXISTS idx_articles_published ON articles(published_at DESC);
 
+-- Create users table
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create user_favorite_categories table
+CREATE TABLE IF NOT EXISTS user_favorite_categories (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(user_id, category_id)
+);
+
+-- Create comments table
+CREATE TABLE IF NOT EXISTS comments (
+    id SERIAL PRIMARY KEY,
+    article_id INTEGER REFERENCES articles(id) ON DELETE CASCADE,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create indexes for user tables
+CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+CREATE INDEX IF NOT EXISTS idx_user_favorites_user ON user_favorite_categories(user_id);
+CREATE INDEX IF NOT EXISTS idx_user_favorites_category ON user_favorite_categories(category_id);
+CREATE INDEX IF NOT EXISTS idx_comments_article ON comments(article_id);
+CREATE INDEX IF NOT EXISTS idx_comments_created ON comments(created_at);
+
 -- Insert default categories
 INSERT INTO categories (name, slug, description, icon, color) VALUES
     ('Technology', 'technology', 'Latest tech news and innovations', '', '#3B82F6'),

@@ -6,6 +6,8 @@ A modern web application that recreates the Flipboard experience with content ag
 
 - **Magazine-style UI** - Beautiful card-based layout inspired by Flipboard
 - **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
+- **User Authentication** - Secure registration and login system with JWT
+- **Personalized Experience** - Select favorite topics and get prioritized content
 - **Trending Articles** - Highlights the most viewed content
 - **Category Navigation** - Browse articles by topic (Technology, Business, Science, etc.)
 - **Rich Media** - High-quality images with smooth hover effects

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getArticle } from '../services/api';
+import CommentSection from '../components/CommentSection';
 import './Article.css';
 
 const Article = () => {
@@ -107,6 +108,9 @@ const Article = () => {
           </div>
         </div>
       </div>
+
+      {/* Comment Section */}
+      <CommentSection articleId={id} />
     </div>
   );
 };

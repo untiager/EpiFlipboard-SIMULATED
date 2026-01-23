@@ -1,20 +1,39 @@
 .article-card {
-  background-color: #fff;
-  border-radius: 8px;
+  background-color: var(--bg-secondary);
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   color: inherit;
   display: flex;
   flex-direction: column;
   height: 100%;
   cursor: pointer;
+  border: 1px solid var(--border-color);
+  position: relative;
+}
+
+.article-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-red), var(--primary-red-light));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.article-card:hover::before {
+  transform: scaleX(1);
 }
 
 .article-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: var(--card-hover-transform);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-hover);
 }
 
 .article-image-container {
@@ -22,7 +41,7 @@
   width: 100%;
   padding-top: 60%;
   overflow: hidden;
-  background-color: var(--medium-gray);
+  background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-hover));
 }
 
 .article-image {
@@ -32,11 +51,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .article-card:hover .article-image {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .article-overlay {
@@ -45,47 +64,53 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7));
+  background: var(--gradient-overlay);
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 12px;
+  padding: 16px;
 }
 
 .article-category {
-  padding: 4px 12px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .article-content {
-  padding: 16px;
+  padding: 20px;
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 12px;
 }
 
 .article-title {
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--text-dark);
-  line-height: 1.4;
+  color: var(--text-primary);
+  line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  transition: color 0.2s ease;
+}
+
+.article-card:hover .article-title {
+  color: var(--primary-red);
 }
 
 .article-description {
   font-size: 14px;
-  color: var(--text-light);
-  line-height: 1.5;
-  margin-bottom: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
   flex: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -98,50 +123,64 @@
   justify-content: space-between;
   align-items: center;
   font-size: 12px;
-  color: var(--text-light);
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
 }
 
 .article-source {
   font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .article-date {
-  opacity: 0.7;
+  color: var(--text-tertiary);
+  font-weight: 500;
 }
 
-/* Size variants */
+.article-card-large {
+  grid-column: span 1;
+}
+
 .article-card-large .article-image-container {
-  padding-top: 50%;
+  padding-top: 55%;
 }
 
 .article-card-large .article-title {
-  font-size: 24px;
+  font-size: 22px;
   -webkit-line-clamp: 3;
+  font-weight: 800;
 }
 
 .article-card-large .article-description {
-  font-size: 16px;
-}
-
-.article-card-small .article-image-container {
-  padding-top: 65%;
-}
-
-.article-card-small .article-title {
-  font-size: 16px;
-}
-
-.article-card-small .article-description {
-  font-size: 13px;
-  -webkit-line-clamp: 2;
+  font-size: 15px;
+  -webkit-line-clamp: 4;
 }
 
 @media (max-width: 768px) {
+  .article-card {
+    border-radius: 12px;
+  }
+
+  .article-content {
+    padding: 16px;
+  }
+
   .article-title {
-    font-size: 16px;
+    font-size: 17px;
   }
 
   .article-description {
     font-size: 13px;
+  }
+
+  .article-card-large .article-title {
+    font-size: 19px;
+  }
+
+  .article-card-large .article-description {
+    font-size: 14px;
   }
 }

@@ -5,6 +5,9 @@ const cron = require('node-cron');
 const articlesRouter = require('./routes/articles');
 const categoriesRouter = require('./routes/categories');
 const aggregationRouter = require('./routes/aggregation');
+const authRouter = require('./routes/auth');
+const favoritesRouter = require('./routes/favorites');
+const commentsRouter = require('./routes/comments');
 const { initializeDatabase } = require('./database/db');
 const { aggregateContent } = require('./services/contentAggregator');
 
@@ -21,6 +24,9 @@ app.use(express.json());
 app.use('/api/articles', articlesRouter);
 app.use('/api/categories', categoriesRouter);
 app.use('/api/admin', aggregationRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/favorites', favoritesRouter);
+app.use('/api/comments', commentsRouter);
 
 // Health check
 app.get('/health', (req, res) => {
